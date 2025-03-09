@@ -1,3 +1,5 @@
+import SelectPanel from "@/components/modals/SelectPanel";
+
 import {
   flexRender,
   getCoreRowModel,
@@ -30,6 +32,7 @@ export function DataTable({ columns, data }) {
 
   return (
     <div className="p-2 border rounded-xl">
+      <SelectPanel />
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (

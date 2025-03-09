@@ -117,9 +117,6 @@ const Auth = () => {
           <Card className="w-[390px]">
             <CardHeader>
               <CardTitle>ورود به پنل </CardTitle>
-              <CardDescription>
-                فقط چند کلیک تا ورود به حساب کاربری شما.
-              </CardDescription>
             </CardHeader>
             <CardContent>
               <Form {...form}>
@@ -165,17 +162,6 @@ const Auth = () => {
                 </form>
               </Form>
             </CardContent>
-
-            <CardFooter>
-              <p className="text-xs font-medium leading-loose text-center">
-                با ورود ، شما موافقت خود را با
-                <a href="#" className="underline text-sky-500">
-                  {" "}
-                  قوانین و مقررات و سیاست حفظ حریم خصوصی
-                </a>{" "}
-                اعلام می‌کنید.
-              </p>
-            </CardFooter>
           </Card>
         </motion.div>
       </div>
