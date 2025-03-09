@@ -1,0 +1,147 @@
+import Axios from "@/lib/axios";
+
+import useSession from "@/hooks/use-session";
+
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import { useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
+import { useToast } from "@/hooks/use-toast";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
+
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../ui/form";
+
+const EditPanel = ({ panel }) => {
+  const { toast } = useToast();
+  const { user } = useSession();
+
+  const schema = z.object({
+    url: z.string().min(1, { message: "آدرس پنل ضروریست." }),
+    username: z.string().min(1, { message: "نام کاربری ضروریست." }),
+    password: z.string().min(1, { message: "رمز عبور ضروریست." }),
+  });
+
+  const form = useForm({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      url: panel.panel_url || "",
+      username: panel.username || "",
+      password: panel.password || "",
+    },
+  });
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: (data) =>
+      Axios.patch("/panels/add", null, {
+        params: {
+          id: panel.id,
+          panel_url: data.url,
+          ...data,
+        },
+      }),
+    onSuccess: () => {
+      toast({
+        title: "پنل با موفقیت ویرایش شد.",
+      });
+
+      location.reload();
+    },
+    onError: () => {
+      toast({
+        title: "خطای سرور.",
+        variant: "destructive",
+      });
+    },
+  });
+
+  if (user?.role === "viewer") return null;
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline">ویرایش پنل</Button>
+      </DialogTrigger>
+      <DialogContent className="max-w-[350px] lg:max-w-[650px]">
+        <DialogHeader>
+          <DialogTitle>ویرایش پنل</DialogTitle>
+        </DialogHeader>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit((data) => mutate(data))}
+            className="space-y-3"
+          >
+            <div className="grid grid-cols-1 gap-3">
+              <FormField
+                name="url"
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>آدرس پنل</FormLabel>
+                    <FormControl>
+                      <Input placeholder="تایپ کنید ..." {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                name="username"
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>نام کاربری</FormLabel>
+                    <FormControl>
+                      <Input placeholder="تایپ کنید" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                name="password"
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>رمز عبور</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="تایپ کنید"
+                        {...field}
+                        type="password"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            <Button disabled={isPending} className="w-full">ویرایش</Button>
+          </form>
+        </Form>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+export default EditPanel;
