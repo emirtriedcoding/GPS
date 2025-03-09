@@ -5,6 +5,7 @@ import useSession from "@/hooks/use-session";
 import {
   flexRender,
   getCoreRowModel,
+  getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 
