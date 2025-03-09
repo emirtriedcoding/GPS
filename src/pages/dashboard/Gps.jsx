@@ -20,7 +20,7 @@ const Gps = () => {
         params: {
           panel_id: panelId,
         },
-      }).then((res) => res.data),
+      }).then((res) => res.data?.list),
     enabled: !!panelId,
   });
 

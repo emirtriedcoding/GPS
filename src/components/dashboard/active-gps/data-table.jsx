@@ -3,6 +3,7 @@ import SelectPanel from "@/components/modals/SelectPanel";
 import {
   flexRender,
   getCoreRowModel,
+  getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 
