@@ -1,5 +1,9 @@
 import "leaflet/dist/leaflet.css";
 
+import markerIconPng from "leaflet/dist/images/marker-icon.png";
+
+import { Icon } from "leaflet";
+
 import L from "leaflet";
 
 import { useToast } from "@/hooks/use-toast";
@@ -117,7 +121,17 @@ const MapComponent = ({
           <MapClickHandler />
 
           {positions.map((pos, index) => (
-            <Marker key={index} position={pos}>
+            <Marker
+              icon={
+                new Icon({
+                  iconUrl: markerIconPng,
+                  iconSize: [25, 41],
+                  iconAnchor: [12, 41],
+                })
+              }
+              key={index}
+              position={pos}
+            >
               {!readOnly && (
                 <Popup>
                   <strong>نقطه {index + 1}</strong>
