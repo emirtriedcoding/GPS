@@ -1,5 +1,7 @@
 import Axios from "@/lib/axios";
 
+import useSession from "@/hooks/use-session";
+
 import { motion } from "framer-motion";
 
 import { columns } from "@/components/dashboard/users/columns";
@@ -7,11 +9,19 @@ import { DataTable } from "@/components/dashboard/users/data-table";
 
 import { useQuery } from "@tanstack/react-query";
 
+import { Navigate } from "react-router-dom";
+
 const Users = () => {
+  const { user } = useSession();
+
   const { data } = useQuery({
     queryKey: ["users"],
     queryFn: () => Axios.get("/users/list").then((res) => res.data),
   });
+
+  if (user && user.role !== "sudo" && user.role !== "super_admin") {
+    return <Navigate to="/dashboard/routes" replace />;
+  }
 
   return (
     <motion.div

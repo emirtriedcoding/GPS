@@ -9,9 +9,9 @@ import { useToast } from "@/hooks/use-toast";
 const DeleteUser = ({ username }) => {
   const { user } = useSession();
 
-  if (!user || user.role === "viewer") return null;
-
   const { toast } = useToast();
+
+  if (!user || user.role === "viewer") return null;
 
   return (
     <Delete

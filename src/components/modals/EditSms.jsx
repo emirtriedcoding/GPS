@@ -1,5 +1,7 @@
 import Axios from "@/lib/axios";
 
+import useSession from "@/hooks/use-session";
+
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { useToast } from "@/hooks/use-toast";
@@ -29,6 +31,8 @@ import { Input } from "../ui/input";
 
 const EditSms = ({ sms }) => {
   const { toast } = useToast();
+
+  const { user } = useSession();
 
   const schema = z.object({
     number: z.string().regex(/^((0?9)|(\+?989))\d{9}$/, {
@@ -67,6 +71,8 @@ const EditSms = ({ sms }) => {
       });
     },
   });
+
+  if (user?.role === "viewer") return null;
 
   return (
     <Dialog>
