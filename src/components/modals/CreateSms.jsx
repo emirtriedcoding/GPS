@@ -70,11 +70,11 @@ const CreateSms = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>ایجاد اعلان Sms</Button>
+        <Button>افزودن شماره جدید</Button>
       </DialogTrigger>
       <DialogContent className="max-w-[350px] lg:max-w-[650px]">
         <DialogHeader>
-          <DialogTitle>ایجاد اعلان Sms</DialogTitle>
+          <DialogTitle>افزودن شماره جدید</DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form

@@ -29,7 +29,9 @@ const Sms = () => {
       }}
       className="mt-5 space-y-6"
     >
-      <h1 className="text-lg font-bold lg:text-2xl">SMS ها</h1>
+      <h1 className="text-lg font-bold lg:text-2xl">
+        شماره های دریافت کننده Sms
+      </h1>
 
       <DataTable columns={columns} data={data || []} />
     </motion.div>

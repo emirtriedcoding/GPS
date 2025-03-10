@@ -71,11 +71,11 @@ const EditSms = ({ sms }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>ویرایش اعلان Sms</Button>
+        <Button>ویرایش شماره</Button>
       </DialogTrigger>
       <DialogContent className="max-w-[350px] lg:max-w-[650px]">
         <DialogHeader>
-          <DialogTitle>ویرایش اعلان Sms</DialogTitle>
+          <DialogTitle>ویرایش شماره</DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form
