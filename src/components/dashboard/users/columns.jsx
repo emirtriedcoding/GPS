@@ -73,6 +73,8 @@ export const columns = [
     accessorKey: "lastLogin",
     header: "آخرین ورود",
     cell: ({ row }) => {
+      if (!row.original?.last_login) return "نامشخص";
+
       const d = new Date(row.original?.last_login).toLocaleDateString("fa-IR", {
         timeZone: "Asia/Tehran",
       });
