@@ -50,7 +50,7 @@ const EditRoute = ({ route }) => {
       origin: route.start_location,
       destination: route.end_location,
       stopLimit: String(route.permitted_stop_time_min),
-      deviationLimit: "",
+      deviationLimit: String(route.permitted_deviation_km),
     },
   });
 
@@ -63,6 +63,7 @@ const EditRoute = ({ route }) => {
           start_location: data.origin,
           end_location: data.destination,
           permitted_stop_time_min: data.stopLimit,
+          permitted_deviation_km: data?.deviationLimit,
           points,
         },
         {
@@ -148,7 +149,7 @@ const EditRoute = ({ route }) => {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>میزان توقف مجاز</FormLabel>
+                    <FormLabel>میزان توقف مجاز - دقیقه</FormLabel>
                     <FormControl>
                       <Input placeholder="تایپ کنید" {...field} type="number" />
                     </FormControl>
@@ -162,7 +163,7 @@ const EditRoute = ({ route }) => {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>میزان انحراف مجاز</FormLabel>
+                    <FormLabel>میزان انحراف مجاز - کیلومتر</FormLabel>
                     <FormControl>
                       <Input placeholder="تایپ کنید" {...field} />
                     </FormControl>

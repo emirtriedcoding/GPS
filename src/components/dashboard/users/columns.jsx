@@ -65,6 +65,22 @@ export const columns = [
     header: "نام کاربری",
   },
   {
+    accessorKey: "is_active",
+    header: "وضعیت",
+    cell: ({ row }) => (row.original?.is_active ? "فعال" : "غیر فعال"),
+  },
+  {
+    accessorKey: "lastLogin",
+    header: "آخرین ورود",
+    cell: ({ row }) => {
+      const d = new Date(row.original?.last_login).toLocaleDateString("fa-IR", {
+        timeZone: "Asia/Tehran",
+      });
+
+      return d;
+    },
+  },
+  {
     accessorKey: "action",
     header: "",
     cell: ({ row }) => {

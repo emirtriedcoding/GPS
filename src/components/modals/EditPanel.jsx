@@ -136,7 +136,7 @@ const EditPanel = ({ panel }) => {
               />
             </div>
 
-            <Button disabled={isPending} className="w-full">ویرایش</Button>
+            <Button disabled={isPending || !form.formState.isDirty} className="w-full">ویرایش</Button>
           </form>
         </Form>
       </DialogContent>

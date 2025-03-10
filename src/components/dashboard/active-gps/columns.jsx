@@ -9,6 +9,10 @@ export const columns = [
     header: "شماره GPS",
   },
   {
+    accessorKey: "serial_number",
+    header: "شماره سریال",
+  },
+  {
     accessorKey: "driver",
     header: "نام راننده",
     cell: ({ row }) => row.original.driver?.driver_name,

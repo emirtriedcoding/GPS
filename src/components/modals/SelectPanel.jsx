@@ -55,7 +55,7 @@ const SelectPanel = () => {
           <SelectContent>
             {data?.map((panel) => (
               <SelectItem key={panel.id} value={Number(panel.id)}>
-                {panel.username}
+                {panel.username} - ( {panel.panel_url} )
               </SelectItem>
             ))}
           </SelectContent>

@@ -21,6 +21,7 @@ import Gps from "./pages/dashboard/Gps";
 import ActiveGps from "./pages/dashboard/ActiveGps";
 import ExpireGPS from "./pages/dashboard/ExpireGPS";
 import Users from "./pages/dashboard/Users";
+import Sms from "./pages/dashboard/Sms";
 import ChangePassword from "./pages/dashboard/ChangePassword";
 
 createRoot(document.getElementById("root")).render(
@@ -43,6 +44,7 @@ createRoot(document.getElementById("root")).render(
               <Route path="/dashboard/active-gps" element={<ActiveGps />} />
               <Route path="/dashboard/expire-close" element={<ExpireGPS />} />
               <Route path="/dashboard/settings/users" element={<Users />} />
+              <Route path="/dashboard/settings/sms" element={<Sms />} />
               <Route
                 path="/dashboard/settings/change-password"
                 element={<ChangePassword />}

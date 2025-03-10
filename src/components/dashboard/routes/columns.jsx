@@ -24,7 +24,12 @@ export const columns = [
   {
     accessorKey: "permitted_stop_time_min",
     header: "میزان توقف مجاز",
-    cell: ({ row }) => `${row.original.permitted_stop_time_min} دقیقه`,
+    cell: ({ row }) => `${row.original?.permitted_stop_time_min} دقیقه`,
+  },
+  {
+    accessorKey: "permitted_deviation_km",
+    header: "میزان انحراف مجاز",
+    cell: ({ row }) => `${row.original?.permitted_stop_time_min} کیلومتر`,
   },
   {
     accessorKey: "action",

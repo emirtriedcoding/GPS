@@ -19,9 +19,9 @@ const ActiveGps = () => {
       Axios.get("/gps_units/get_all", {
         params: {
           only_with_connected_driver: true,
-          panel_id: panelId,
+          panel_id: panelId || null,
         },
-      }).then((res) => res.data),
+      }).then((res) => res.data?.list),
   });
 
   return (

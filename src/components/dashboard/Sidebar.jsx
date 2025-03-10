@@ -37,6 +37,8 @@ import {
   Locate,
   LocateFixed,
   LocateOff,
+  Settings2,
+  MessageSquareText,
 } from "lucide-react";
 
 const routes = [
@@ -63,6 +65,11 @@ const gpsRoutes = [
 const settingsRoutes = [
   { title: "مدیریت کاربران", url: "/dashboard/settings/users", icon: Users },
   {
+    title: "اعلان SMS",
+    url: "/dashboard/settings/sms",
+    icon: MessageSquareText,
+  },
+  {
     title: "تغییر گذرواژه",
     url: "/dashboard/settings/change-password",
     icon: Key,
@@ -82,7 +89,7 @@ const Sidebar = () => {
       return navigate("/auth", {
         replace: true,
       });
-    } catch  {
+    } catch {
       toast({
         title: "خطایی رخ داده است.",
       });
@@ -117,11 +124,14 @@ const Sidebar = () => {
                 </SidebarMenuItem>
               ))}
 
-              <Collapsible className="group/collapsible">
-                <SidebarGroup>
+              <Collapsible className="group/collapsible ">
+                <SidebarGroup className="!p-0">
                   <SidebarGroupLabel asChild>
-                    <CollapsibleTrigger>
-                      مدیریت GPS
+                    <CollapsibleTrigger className="!text-white">
+                      <div className="flex items-center gap-2 ">
+                        <Locate size={19} />
+                        مدیریت GPS
+                      </div>
                       <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
                     </CollapsibleTrigger>
                   </SidebarGroupLabel>
@@ -151,10 +161,13 @@ const Sidebar = () => {
               </Collapsible>
 
               <Collapsible className="group/collapsible">
-                <SidebarGroup>
+                <SidebarGroup className="!p-0">
                   <SidebarGroupLabel asChild>
-                    <CollapsibleTrigger>
-                      تنظیمات
+                    <CollapsibleTrigger className="!text-white">
+                      <div className="flex items-center gap-2 ">
+                        <Settings2 size={19} />
+                        تنظیمات
+                      </div>
                       <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
                     </CollapsibleTrigger>
                   </SidebarGroupLabel>

@@ -23,7 +23,7 @@ export const columns = [
           target="_blank"
           className="text-xs font-bold text-blue-500 underline"
         >
-          کلیک کنید
+          {row.original?.panel_url}
         </a>
       );
     },

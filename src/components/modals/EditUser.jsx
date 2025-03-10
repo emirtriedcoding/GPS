@@ -53,7 +53,7 @@ const EditUser = ({ user }) => {
         /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
         {
           message:
-            "گذرواژه حداقل باید 8 کاراکتر شامل عدد ، حروف و مواردی مانند @ باشد.",
+            "گذرواژه حداقل باید 8 کاراکتر بزرگ و کوچک ، شامل عدد ، حروف و مواردی مانند @ باشد.",
         }
       ),
   });
@@ -180,7 +180,10 @@ const EditUser = ({ user }) => {
               />
             </div>
 
-            <Button disabled={isPending} className="w-full">
+            <Button
+              disabled={isPending || !form.formState.isDirty}
+              className="w-full"
+            >
               ویرایش
             </Button>
           </form>

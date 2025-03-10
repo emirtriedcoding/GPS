@@ -120,6 +120,10 @@ export const columns = [
     header: "شماره GPS",
   },
   {
+    accessorKey: "serial_number",
+    header: "شماره سریال",
+  },
+  {
     accessorKey: "battery_percent",
     header: "باطری",
     cell: ({ row }) => <span>%{row.original.battery_percent}</span>,

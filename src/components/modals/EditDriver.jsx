@@ -195,7 +195,10 @@ const EditDriver = ({ driver }) => {
               )}
             />
 
-            <Button disabled={isPending} className="w-full">
+            <Button
+              disabled={isPending || !form.formState.isDirty}
+              className="w-full"
+            >
               ویرایش
             </Button>
           </form>

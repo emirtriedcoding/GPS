@@ -13,7 +13,7 @@ const ExpireGps = () => {
     queryFn: () =>
       Axios.get("/gps_units/get_near_expire", {
         params: {
-          days: 2,
+          days: 7,
         },
       }).then((res) => res.data),
   });
